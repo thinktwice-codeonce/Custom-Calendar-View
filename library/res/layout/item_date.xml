@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="80dp"
-    android:background="@drawable/bg_rounded_rect_border"
+    android:background="@drawable/bg_rect_border"
     android:orientation="vertical"
     android:padding="5dp">
 
