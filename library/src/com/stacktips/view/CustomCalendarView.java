@@ -224,18 +224,18 @@ public class CustomCalendarView extends LinearLayout {
             dayView.setVisibility(View.VISIBLE);
 
             if (null != getCustomTypeface()) {
-                dayView.setTypeface(getCustomTypeface());
+//                dayView.setTypeface(getCustomTypeface());
             }
 
             if (CalendarUtils.isSameMonth(calendar, startCalendar)) {
                 dayOfMonthContainer.setOnClickListener(onDayOfMonthClickListener);
                 dayView.setBackgroundColor(calendarBackgroundColor);
-                dayView.setTextColor(dayOfWeekTextColor);
+//                dayView.setTextColor(dayOfWeekTextColor);
                 //Set the current day color
                 markDayAsCurrentDay(startCalendar);
             } else {
                 dayView.setBackgroundColor(disabledDayBackgroundColor);
-                dayView.setTextColor(disabledDayTextColor);
+                //dayView.setTextColor(disabledDayTextColor);
 
                 if (!isOverflowDateVisible())
                     dayView.setVisibility(View.GONE);
@@ -268,7 +268,7 @@ public class CustomCalendarView extends LinearLayout {
 
             final DayView dayView = getDayOfMonthText(calendar);
             dayView.setBackgroundColor(calendarBackgroundColor);
-            dayView.setTextColor(dayOfWeekTextColor);
+            //dayView.setTextColor(dayOfWeekTextColor);
             dayView.decorate();
         }
     }
@@ -357,7 +357,7 @@ public class CustomCalendarView extends LinearLayout {
     public void markDayAsCurrentDay(Calendar calendar) {
         if (calendar != null && CalendarUtils.isToday(calendar)) {
             DayView dayOfMonth = getDayOfMonthText(calendar);
-            dayOfMonth.setTextColor(currentDayOfMonth);
+//            dayOfMonth.setTextColor(currentDayOfMonth);
         }
     }
 
@@ -375,7 +375,7 @@ public class CustomCalendarView extends LinearLayout {
         // Mark current day as selected
         DayView view = getDayOfMonthText(currentCalendar);
         view.setBackgroundColor(selectedDayBackground);
-        view.setTextColor(selectedDayTextColor);
+        //view.setTextColor(selectedDayTextColor);
     }
 
     private void storeLastValues(Date currentDate) {
@@ -393,13 +393,14 @@ public class CustomCalendarView extends LinearLayout {
             ViewGroup dayOfMonthContainer = (ViewGroup) view;
             String tagId = (String) dayOfMonthContainer.getTag();
             tagId = tagId.substring(DAY_OF_MONTH_CONTAINER.length(), tagId.length());
-            final TextView dayOfMonthText = (TextView) view.findViewWithTag(DAY_OF_MONTH_TEXT + tagId);
+            final View dayOfMonthView = view.findViewWithTag(DAY_OF_MONTH_TEXT + tagId);
+            TextView tv1 = dayOfMonthView.findViewById(R.id.item_date_tv_1);
 
             // Fire event
             final Calendar calendar = Calendar.getInstance();
             calendar.setFirstDayOfWeek(getFirstDayOfWeek());
             calendar.setTime(currentCalendar.getTime());
-            calendar.set(Calendar.DAY_OF_MONTH, Integer.valueOf(dayOfMonthText.getText().toString()));
+            calendar.set(Calendar.DAY_OF_MONTH, Integer.valueOf(tv1.getText().toString()));
             markDayAsSelectedDay(calendar.getTime());
 
             //Set the current day color

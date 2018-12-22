@@ -19,29 +19,27 @@ package com.stacktips.view;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.imanoweb.calendarview.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class DayView extends TextView {
+public class DayView extends LinearLayout {
     private Date date;
     private List<DayDecorator> decorators;
 
     public DayView(Context context) {
-        this(context, null, 0);
+        super(context);
     }
 
     public DayView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public DayView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
-            if (isInEditMode())
-                return;
-        }
+        super(context, attrs);
+        addView(LayoutInflater.from(context).inflate(R.layout.item_date, this, false));
     }
 
     public void bind(Date date, List<DayDecorator> decorators) {
@@ -50,7 +48,8 @@ public class DayView extends TextView {
 
         final SimpleDateFormat df = new SimpleDateFormat("d");
         int day = Integer.parseInt(df.format(date));
-        setText(String.valueOf(day));
+        TextView tv1 = findViewById(R.id.item_date_tv_1);
+        tv1.setText(String.valueOf(day));
     }
 
     public void decorate() {
