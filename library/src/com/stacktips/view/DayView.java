@@ -17,6 +17,7 @@
 package com.stacktips.view;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.provider.CalendarContract;
 import android.support.v4.content.ContextCompat;
@@ -37,6 +38,9 @@ public class DayView extends LinearLayout {
     private Date date;
     private List<DayDecorator> decorators;
     private TextView tvDate;
+    private TextView tvDetail1;
+    private TextView tvDetail2;
+    private TextView tvDetail3;
 
     public DayView(Context context) {
         super(context);
@@ -47,6 +51,7 @@ public class DayView extends LinearLayout {
         addView(LayoutInflater.from(context).inflate(R.layout.item_date, this, false));
     }
 
+    @SuppressWarnings("deprecation")
     public void bind(Date date, List<DayDecorator> decorators) {
         this.date = date;
         this.decorators = decorators;
@@ -54,6 +59,10 @@ public class DayView extends LinearLayout {
         final SimpleDateFormat df = new SimpleDateFormat("d");
         int day = Integer.parseInt(df.format(date));
         tvDate = findViewById(R.id.item_date_tv_date);
+        tvDetail1 = findViewById(R.id.item_date_tv_detail1);
+        tvDetail2 = findViewById(R.id.item_date_tv_detail2);
+        tvDetail3 = findViewById(R.id.item_date_tv_detail3);
+
         tvDate.setText(String.valueOf(day));
         if (date.getDay() == 0) { //Sunday
             tvDate.setTextColor(ContextCompat.getColor(getContext(), R.color.red));
@@ -80,5 +89,15 @@ public class DayView extends LinearLayout {
 
     public void setTextColor(int disabledDayTextColor) {
         tvDate.setTextColor(disabledDayTextColor);
+    }
+
+    public void setTypeface(Typeface customTypeface) {
+        tvDate.setTypeface(customTypeface);
+    }
+
+    public void setTextDetails(String text1, String text2, String text3) {
+        tvDetail1.setText(text1);
+        tvDetail2.setText(text2);
+        tvDetail3.setText(text3);
     }
 }

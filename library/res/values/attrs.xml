@@ -12,6 +12,7 @@
         <attr name="selectedDayTextColor" format="color" />
         <attr name="weekLayoutBackgroundColor" format="color" />
         <attr name="titleLayoutBackgroundColor" format="color" />
-        <attr name="currentDayOfMonthColor" format="color" />
+        <attr name="currentDayOfMonthDrawable" format="integer" />
+        <attr name="selectedDayOfMonthBackgroundDrawable" format="integer"/>
     </declare-styleable>
 </resources>

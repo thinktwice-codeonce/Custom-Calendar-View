@@ -20,6 +20,7 @@
             android:layout_gravity="center"
             android:addStatesFromChildren="true"
             android:clickable="true"
+            android:background="@color/white"
             android:focusableInTouchMode="true"
             android:focusable="true"
             android:orientation="vertical">

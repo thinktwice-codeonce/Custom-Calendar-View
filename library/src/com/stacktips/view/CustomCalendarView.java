@@ -19,20 +19,23 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.imanoweb.calendarview.R;
 import com.stacktips.view.utils.CalendarUtils;
+
 import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -67,10 +70,12 @@ public class CustomCalendarView extends LinearLayout {
     private int calendarTitleTextColor;
     private int dayOfWeekTextColor;
     private int dayOfMonthTextColor;
-    private int currentDayOfMonth;
+    private Drawable currentDayOfMonthDrawable;
+    private Drawable selectedDayOfMonthBackgroundDrawable;
 
     private int currentMonthIndex = 0;
     private boolean isOverflowDateVisible = true;
+    private final List<DayView> dayViews = new ArrayList<>();
 
     public CustomCalendarView(Context mContext) {
         this(mContext, null);
@@ -102,7 +107,8 @@ public class CustomCalendarView extends LinearLayout {
         disabledDayTextColor = typedArray.getColor(R.styleable.CustomCalendarView_disabledDayTextColor, getResources().getColor(R.color.day_disabled_text_color));
         selectedDayBackground = typedArray.getColor(R.styleable.CustomCalendarView_selectedDayBackgroundColor, getResources().getColor(R.color.selected_day_background));
         selectedDayTextColor = typedArray.getColor(R.styleable.CustomCalendarView_selectedDayTextColor, getResources().getColor(R.color.white));
-        currentDayOfMonth = typedArray.getColor(R.styleable.CustomCalendarView_currentDayOfMonthColor, getResources().getColor(R.color.current_day_of_month));
+        currentDayOfMonthDrawable = typedArray.getDrawable(R.styleable.CustomCalendarView_currentDayOfMonthDrawable);
+        selectedDayOfMonthBackgroundDrawable = typedArray.getDrawable(R.styleable.CustomCalendarView_selectedDayOfMonthBackgroundDrawable);
         typedArray.recycle();
     }
 
@@ -140,12 +146,12 @@ public class CustomCalendarView extends LinearLayout {
         llContainer.setOnSwipeListener(new OnSwipeListener() {
             @Override
             public void onSwipeRight() {
-                goToNextMonth();
+                goToPreviousMonth();
             }
 
             @Override
             public void onSwipeLeft() {
-                goToPreviousMonth();
+                goToNextMonth();
             }
         });
     }
@@ -245,6 +251,7 @@ public class CustomCalendarView extends LinearLayout {
 
         DayView dayView;
         ViewGroup dayOfMonthContainer;
+        dayViews.clear();
         for (int i = 1; i < 43; i++) {
             dayOfMonthContainer = (ViewGroup) view.findViewWithTag(DAY_OF_MONTH_CONTAINER + i);
             dayView = (DayView) view.findViewWithTag(DAY_OF_MONTH_TEXT + i);
@@ -257,7 +264,7 @@ public class CustomCalendarView extends LinearLayout {
             dayView.setVisibility(View.VISIBLE);
 
             if (null != getCustomTypeface()) {
-//                dayView.setTypeface(getCustomTypeface());
+                dayView.setTypeface(getCustomTypeface());
             }
 
             if (CalendarUtils.isSameMonth(calendar, startCalendar)) {
@@ -278,9 +285,10 @@ public class CustomCalendarView extends LinearLayout {
             }
             dayView.decorate();
 
-
             startCalendar.add(Calendar.DATE, 1);
             dayOfMonthIndex++;
+
+            dayViews.add(dayView);
         }
 
         // If the last week row has no visible days, hide it or show it in case
@@ -390,7 +398,7 @@ public class CustomCalendarView extends LinearLayout {
     public void markDayAsCurrentDay(Calendar calendar) {
         if (calendar != null && CalendarUtils.isToday(calendar)) {
             DayView dayOfMonth = getDayOfMonthText(calendar);
-//            dayOfMonth.setTextColor(currentDayOfMonth);
+            dayOfMonth.setBackground(currentDayOfMonthDrawable);
         }
     }
 
@@ -407,7 +415,8 @@ public class CustomCalendarView extends LinearLayout {
 
         // Mark current day as selected
         DayView view = getDayOfMonthText(currentCalendar);
-        view.setBackgroundColor(selectedDayBackground);
+        view.setBackground(selectedDayOfMonthBackgroundDrawable);
+//        view.setBackgroundColor(selectedDayBackground);
         //view.setTextColor(selectedDayTextColor);
     }
 
@@ -470,5 +479,21 @@ public class CustomCalendarView extends LinearLayout {
 
     public Calendar getCurrentCalendar() {
         return currentCalendar;
+    }
+
+    /**
+     *
+     * @param date the date input as String with pattern: yyyyMMdd, ex: 20181017
+     * @return The corresponding Day View that can be used to update UI.
+     */
+    public DayView getDayViewByDate(String date) {
+        for (DayView dayView : dayViews) {
+            if (date.equals(
+                    new SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+                            .format(dayView.getDate()))) {
+                return dayView;
+            }
+        }
+        return null;
     }
 }
