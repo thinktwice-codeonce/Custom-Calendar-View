@@ -6,7 +6,8 @@
 
     <include
         android:id="@+id/titleLayout"
-        layout="@layout/custom_calendar_title_layout" />
+        layout="@layout/custom_calendar_title_layout"
+        android:visibility="gone"/>
 
     <include
         android:id="@+id/weekLayout"

@@ -17,15 +17,19 @@
 package com.stacktips.view;
 
 import android.content.Context;
-import android.os.Build;
+import android.graphics.drawable.ColorDrawable;
+import android.provider.CalendarContract;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.imanoweb.calendarview.R;
+import com.stacktips.view.utils.CalendarUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -48,8 +52,15 @@ public class DayView extends LinearLayout {
 
         final SimpleDateFormat df = new SimpleDateFormat("d");
         int day = Integer.parseInt(df.format(date));
-        TextView tv1 = findViewById(R.id.item_date_tv_1);
-        tv1.setText(String.valueOf(day));
+        TextView tvDate = findViewById(R.id.item_date_tv_date);
+        tvDate.setText(String.valueOf(day));
+        if (date.getDay() == 0) { //Sunday
+            tvDate.setTextColor(ContextCompat.getColor(getContext(), R.color.red));
+        } else if (date.getDay() == 6) {
+            tvDate.setTextColor(ContextCompat.getColor(getContext(), R.color.blue2));
+        } else {
+            tvDate.setTextColor(ContextCompat.getColor(getContext(), R.color.black_opacity));
+        }
     }
 
     public void decorate() {
