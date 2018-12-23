@@ -36,6 +36,7 @@ import java.util.List;
 public class DayView extends LinearLayout {
     private Date date;
     private List<DayDecorator> decorators;
+    private TextView tvDate;
 
     public DayView(Context context) {
         super(context);
@@ -52,16 +53,17 @@ public class DayView extends LinearLayout {
 
         final SimpleDateFormat df = new SimpleDateFormat("d");
         int day = Integer.parseInt(df.format(date));
-        TextView tvDate = findViewById(R.id.item_date_tv_date);
+        tvDate = findViewById(R.id.item_date_tv_date);
         tvDate.setText(String.valueOf(day));
         if (date.getDay() == 0) { //Sunday
             tvDate.setTextColor(ContextCompat.getColor(getContext(), R.color.red));
         } else if (date.getDay() == 6) {
             tvDate.setTextColor(ContextCompat.getColor(getContext(), R.color.blue2));
         } else {
-            tvDate.setTextColor(ContextCompat.getColor(getContext(), R.color.black_opacity));
+            tvDate.setTextColor(ContextCompat.getColor(getContext(), R.color.black_opacity_99));
         }
     }
+
 
     public void decorate() {
         //Set custom decorators
@@ -74,5 +76,9 @@ public class DayView extends LinearLayout {
 
     public Date getDate() {
         return date;
+    }
+
+    public void setTextColor(int disabledDayTextColor) {
+        tvDate.setTextColor(disabledDayTextColor);
     }
 }

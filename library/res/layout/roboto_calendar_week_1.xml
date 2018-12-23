@@ -5,6 +5,9 @@
     android:baselineAligned="false"
     android:orientation="horizontal"
     android:tag="weekRow1"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     android:weightSum="7">
 
     <RelativeLayout
@@ -12,6 +15,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:tag="dayOfMonthContainer1">
 
         <com.stacktips.view.DayView
@@ -30,6 +36,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:tag="dayOfMonthContainer2">
 
 
@@ -50,6 +59,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:tag="dayOfMonthContainer3">
 
 
@@ -69,6 +81,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:tag="dayOfMonthContainer4">
 
 
@@ -88,6 +103,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:tag="dayOfMonthContainer5">
 
         <com.stacktips.view.DayView
@@ -106,6 +124,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:tag="dayOfMonthContainer6">
 
         <com.stacktips.view.DayView
@@ -124,6 +145,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
         android:tag="dayOfMonthContainer7">
 
         <com.stacktips.view.DayView

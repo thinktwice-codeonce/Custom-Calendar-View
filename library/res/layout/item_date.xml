@@ -11,6 +11,7 @@
         android:id="@+id/item_date_tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black_opacity_99"
         android:textSize="11dp"/>
 
     <TextView

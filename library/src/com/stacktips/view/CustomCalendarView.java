@@ -20,10 +20,13 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,6 +43,7 @@ public class CustomCalendarView extends LinearLayout {
     private View view;
     private ImageView previousMonthButton;
     private ImageView nextMonthButton;
+    private DispatchLinearLayout llContainer;
     private CalendarListener calendarListener;
     private Calendar currentCalendar;
     private Locale locale;
@@ -107,32 +111,20 @@ public class CustomCalendarView extends LinearLayout {
         view = inflate.inflate(R.layout.custom_calendar_layout, this, true);
         previousMonthButton = (ImageView) view.findViewById(R.id.leftButton);
         nextMonthButton = (ImageView) view.findViewById(R.id.rightButton);
+        llContainer = view.findViewById(R.id.daysContainer);
+        handleSwiping();
 
         previousMonthButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                currentMonthIndex--;
-                currentCalendar = Calendar.getInstance(Locale.getDefault());
-                currentCalendar.add(Calendar.MONTH, currentMonthIndex);
-
-                refreshCalendar(currentCalendar);
-                if (calendarListener != null) {
-                    calendarListener.onMonthChanged(currentCalendar.getTime());
-                }
+               goToPreviousMonth();
             }
         });
 
         nextMonthButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                currentMonthIndex++;
-                currentCalendar = Calendar.getInstance(Locale.getDefault());
-                currentCalendar.add(Calendar.MONTH, currentMonthIndex);
-                refreshCalendar(currentCalendar);
-
-                if (calendarListener != null) {
-                    calendarListener.onMonthChanged(currentCalendar.getTime());
-                }
+               goToNextMonth();
             }
         });
 
@@ -144,6 +136,41 @@ public class CustomCalendarView extends LinearLayout {
         refreshCalendar(currentCalendar);
     }
 
+    private void handleSwiping() {
+        llContainer.setOnSwipeListener(new OnSwipeListener() {
+            @Override
+            public void onSwipeRight() {
+                goToNextMonth();
+            }
+
+            @Override
+            public void onSwipeLeft() {
+                goToPreviousMonth();
+            }
+        });
+    }
+
+    private void goToPreviousMonth() {
+        currentMonthIndex--;
+        currentCalendar = Calendar.getInstance(Locale.getDefault());
+        currentCalendar.add(Calendar.MONTH, currentMonthIndex);
+
+        refreshCalendar(currentCalendar);
+        if (calendarListener != null) {
+            calendarListener.onMonthChanged(currentCalendar.getTime());
+        }
+    }
+
+    private void goToNextMonth() {
+        currentMonthIndex++;
+        currentCalendar = Calendar.getInstance(Locale.getDefault());
+        currentCalendar.add(Calendar.MONTH, currentMonthIndex);
+        refreshCalendar(currentCalendar);
+
+        if (calendarListener != null) {
+            calendarListener.onMonthChanged(currentCalendar.getTime());
+        }
+    }
 
     /**
      * Display calendar title with next previous month button
@@ -186,7 +213,13 @@ public class CustomCalendarView extends LinearLayout {
 
             dayOfWeek = (TextView) view.findViewWithTag(DAY_OF_WEEK + getWeekIndex(i, currentCalendar));
             dayOfWeek.setText(dayOfTheWeekString);
-            dayOfWeek.setTextColor(dayOfWeekTextColor);
+            if (i == 1) { //Sunday
+                dayOfWeek.setTextColor(ContextCompat.getColor(getContext(), R.color.red));
+            } else if (i == 7) {
+                dayOfWeek.setTextColor(ContextCompat.getColor(getContext(), R.color.blue2));
+            } else {
+                dayOfWeek.setTextColor(dayOfWeekTextColor);
+            }
 
             if (null != getCustomTypeface()) {
                 dayOfWeek.setTypeface(getCustomTypeface());
@@ -235,7 +268,7 @@ public class CustomCalendarView extends LinearLayout {
                 markDayAsCurrentDay(startCalendar);
             } else {
                 dayView.setBackgroundColor(disabledDayBackgroundColor);
-                //dayView.setTextColor(disabledDayTextColor);
+                dayView.setTextColor(disabledDayTextColor);
 
                 if (!isOverflowDateVisible())
                     dayView.setVisibility(View.GONE);
