@@ -41,6 +41,7 @@ public class DayView extends LinearLayout {
     private TextView tvDetail1;
     private TextView tvDetail2;
     private TextView tvDetail3;
+    private TextView tvHolidayName;
 
     public DayView(Context context) {
         super(context);
@@ -62,6 +63,12 @@ public class DayView extends LinearLayout {
         tvDetail1 = findViewById(R.id.item_date_tv_detail1);
         tvDetail2 = findViewById(R.id.item_date_tv_detail2);
         tvDetail3 = findViewById(R.id.item_date_tv_detail3);
+        tvHolidayName = findViewById(R.id.item_date_tv_holiday_name);
+
+        tvDetail1.setText("");
+        tvDetail2.setText("");
+        tvDetail3.setText("");
+        tvHolidayName.setText("");
 
         tvDate.setText(String.valueOf(day));
         if (date.getDay() == 0) { //Sunday
@@ -99,5 +106,9 @@ public class DayView extends LinearLayout {
         tvDetail1.setText(text1);
         tvDetail2.setText(text2);
         tvDetail3.setText(text3);
+    }
+
+    public void setHolidayName(String holidayName) {
+        tvHolidayName.setText(holidayName);
     }
 }

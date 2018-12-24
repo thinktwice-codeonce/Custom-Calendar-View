@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/titleLayout"
-        layout="@layout/custom_calendar_title_layout"
-        android:visibility="gone"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <include
-        android:id="@+id/weekLayout"
-        layout="@layout/custom_calendar_weeks_layout" />
+        <include
+            android:id="@+id/titleLayout"
+            layout="@layout/custom_calendar_title_layout"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/weekLayout"
+            layout="@layout/custom_calendar_weeks_layout" />
 
         <com.stacktips.view.DispatchLinearLayout
             android:id="@+id/daysContainer"
@@ -19,10 +23,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:addStatesFromChildren="true"
-            android:clickable="true"
             android:background="@color/white"
-            android:focusableInTouchMode="true"
+            android:clickable="true"
             android:focusable="true"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <include layout="@layout/roboto_calendar_week_1" />
@@ -38,5 +42,6 @@
             <include layout="@layout/roboto_calendar_week_6" />
 
         </com.stacktips.view.DispatchLinearLayout>
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
