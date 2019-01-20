@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/bg_rect_border"
+    android:layout_height="81dp"
+    android:background="@drawable/bg_table_cell_border"
     android:paddingTop="5dp"
     android:paddingStart="5dp"
     android:paddingEnd="5dp"
+    tools:ignore="MissingPrefix"
     android:orientation="vertical">
 
     <TextView
@@ -16,7 +18,9 @@
         android:maxLines="1"
         android:singleLine="true"
         android:textColor="@color/black_opacity_99"
-        android:textSize="11dp" />
+        fontPath="fonts/NanumGothic-Bold.ttf"
+        android:textSize="9.5dp"
+        />
 
     <TextView
         android:id="@+id/item_date_tv_detail1"
@@ -24,9 +28,11 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
+        android:layout_marginTop="2dp"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:textSize="11dp" />
+        fontPath="fonts/NanumGothic-Bold.ttf"
+        android:textSize="9.5dp"/>
 
     <TextView
         android:id="@+id/item_date_tv_detail2"
@@ -34,8 +40,10 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
+        android:layout_marginTop="2dp"
         android:singleLine="true"
         android:textColor="@color/black"
+        fontPath="fonts/NanumGothic-Bold.ttf"
         android:textSize="11dp" />
 
 
@@ -45,9 +53,11 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
+        android:layout_marginTop="2dp"
         android:singleLine="true"
         android:textColor="@color/black"
-        android:textSize="11dp" />
+        fontPath="fonts/NanumGothic-Bold.ttf"
+        android:textSize="9.5dp" />
 
     <TextView
         android:id="@+id/item_date_tv_holiday_name"
@@ -55,8 +65,10 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
+        android:layout_marginTop="2dp"
         android:singleLine="true"
         android:textColor="@color/red"
-        android:textSize="11dp" />
+        fontPath="fonts/NanumGothic-Bold.ttf"
+        android:textSize="9.5dp" />
 
 </LinearLayout>

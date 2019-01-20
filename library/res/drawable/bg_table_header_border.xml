@@ -3,6 +3,6 @@
 
 <stroke
     android:width="0.5dp"
-    android:color="@color/black_opacity"/>
+    android:color="@color/table_header_border"/>
 
 </shape>

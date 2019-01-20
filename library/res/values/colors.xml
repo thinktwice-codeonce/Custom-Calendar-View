@@ -9,8 +9,11 @@
     <color name="black_opacity">#80000000</color>
     <color name="black_opacity_99">#99000000</color>
     <color name="red2">#F34D50</color>
-    <color name="red">#CC565B</color>
-    <color name="blue2">#6B89B8</color>
+    <color name="red">#e50012</color>
+    <color name="blue2">#275ba8</color>
     <color name="black2">#616161</color>
     <color name="gray_light">#F8F9FB</color>
+    <color name="gray">#F8F8F9</color>
+    <color name="table_cell_border">#e6e6e6</color>
+    <color name="table_header_border">#b4b4b4</color>
 </resources>

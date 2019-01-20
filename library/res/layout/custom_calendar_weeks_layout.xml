@@ -1,53 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/gray_light"
-    android:gravity="center"
+    android:layout_height="27.5dp"
+    android:background="@color/gray"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingBottom="@dimen/weekTitlePaddingTop"
-    android:paddingTop="@dimen/weekTitlePaddingBottom"
+    tools:ignore="MissingPrefix"
     android:weightSum="7">
 
     <TextView
-        style="@style/CalendarView.DayOfTheWeek"
+        fontPath="fonts/NanumGothic-Regular.ttf"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@drawable/bg_table_header_border"
+        android:gravity="center"
         android:tag="dayOfWeek1"
-        android:text="SUN" />
+        android:text="@string/sun"
+        android:textSize="11.5dp" />
 
     <TextView
-        style="@style/CalendarView.DayOfTheWeek"
+        fontPath="fonts/NanumGothic-Regular.ttf"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@drawable/bg_table_header_border"
+        android:gravity="center"
         android:tag="dayOfWeek2"
-        android:text="MON" />
+        android:text="@string/mon"
+        android:textSize="11.5dp" />
 
     <TextView
-        style="@style/CalendarView.DayOfTheWeek"
+        fontPath="fonts/NanumGothic-Regular.ttf"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@drawable/bg_table_header_border"
+        android:gravity="center"
         android:tag="dayOfWeek3"
-        android:text="TUE" />
+        android:text="@string/tue"
+        android:textSize="11.5dp" />
 
     <TextView
-        style="@style/CalendarView.DayOfTheWeek"
+        fontPath="fonts/NanumGothic-Regular.ttf"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@drawable/bg_table_header_border"
+        android:gravity="center"
         android:tag="dayOfWeek4"
-        android:text="WED" />
+        android:text="@string/wed"
+        android:textSize="11.5dp" />
 
     <TextView
-        style="@style/CalendarView.DayOfTheWeek"
+        fontPath="fonts/NanumGothic-Regular.ttf"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@drawable/bg_table_header_border"
+        android:gravity="center"
         android:tag="dayOfWeek5"
-        android:text="THU" />
+        android:text="@string/thu"
+        android:textSize="11.5dp" />
 
     <TextView
-        style="@style/CalendarView.DayOfTheWeek"
+        fontPath="fonts/NanumGothic-Regular.ttf"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@drawable/bg_table_header_border"
+        android:gravity="center"
         android:tag="dayOfWeek6"
-        android:text="FRI" />
+        android:text="@string/fri"
+        android:textSize="11.5dp" />
 
     <TextView
-        style="@style/CalendarView.DayOfTheWeek"
+        fontPath="fonts/NanumGothic-Regular.ttf"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="@drawable/bg_table_header_border"
+        android:gravity="center"
         android:tag="dayOfWeek7"
-        android:text="SAT" />
+        android:text="@string/sat"
+        android:textSize="11.5dp" />
 </LinearLayout>
