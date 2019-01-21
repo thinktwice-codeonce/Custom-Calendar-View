@@ -16,4 +16,5 @@
     <color name="gray">#F8F8F9</color>
     <color name="table_cell_border">#e6e6e6</color>
     <color name="table_header_border">#b4b4b4</color>
+    <color name="menu_border">#a2a2a2</color>
 </resources>
