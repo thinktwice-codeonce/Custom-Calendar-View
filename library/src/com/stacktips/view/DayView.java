@@ -18,8 +18,6 @@ package com.stacktips.view;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.provider.CalendarContract;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -27,10 +25,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.imanoweb.calendarview.R;
-import com.stacktips.view.utils.CalendarUtils;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -102,9 +98,9 @@ public class DayView extends LinearLayout {
         tvDate.setTypeface(customTypeface);
     }
 
-    public void setTextDetails(String text1, String text2, String text3) {
+    public void setTextDetails(String text1, String text3) {
         tvDetail1.setText(text1);
-        tvDetail2.setText(text2);
+        tvDetail2.setText("까지");
         tvDetail3.setText(text3);
     }
 

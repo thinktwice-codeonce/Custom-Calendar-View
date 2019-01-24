@@ -34,7 +34,6 @@ import com.imanoweb.calendarview.R;
 import com.stacktips.view.utils.CalendarUtils;
 
 import java.text.DateFormatSymbols;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -483,14 +482,15 @@ public class CustomCalendarView extends LinearLayout {
 
     /**
      *
-     * @param date the date input as String with pattern: yyyyMMdd, ex: 20181017
+     * @param day the day (from 1 to 31) of the month
      * @return The corresponding Day View that can be used to update UI.
      */
-    public DayView getDayViewByDate(String date) {
+    public DayView getDayViewByDate(String month, int day) {
         for (DayView dayView : dayViews) {
-            if (date.equals(
-                    new SimpleDateFormat("yyyyMMdd", Locale.getDefault())
-                            .format(dayView.getDate()))) {
+            Calendar calendar = Calendar.getInstance(Locale.getDefault());
+            calendar.setTime(dayView.getDate());
+            if (calendar.get(Calendar.MONTH) + 1 == Integer.valueOf(month)
+                    && calendar.get(Calendar.DAY_OF_MONTH) == day) {
                 return dayView;
             }
         }
