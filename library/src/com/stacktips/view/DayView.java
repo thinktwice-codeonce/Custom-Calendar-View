@@ -62,7 +62,6 @@ public class DayView extends LinearLayout {
         tvHolidayName = findViewById(R.id.item_date_tv_holiday_name);
 
         tvDetail1.setText("");
-        tvDetail2.setText("");
         tvDetail3.setText("");
         tvHolidayName.setText("");
 
@@ -100,7 +99,6 @@ public class DayView extends LinearLayout {
 
     public void setTextDetails(String text1, String text3) {
         tvDetail1.setText(text1);
-        tvDetail2.setText("까지");
         tvDetail3.setText(text3);
     }
 

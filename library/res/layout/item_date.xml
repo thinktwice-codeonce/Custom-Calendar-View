@@ -42,10 +42,10 @@
         android:maxLines="1"
         android:layout_marginTop="2dp"
         android:singleLine="true"
+        android:visibility="gone"
         android:textColor="@color/black"
         fontPath="fonts/NanumGothic-Bold.ttf"
         android:textSize="11dp" />
-
 
     <TextView
         android:id="@+id/item_date_tv_detail3"
