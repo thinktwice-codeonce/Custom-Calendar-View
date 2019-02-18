@@ -1,88 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="27.5dp"
+    android:layout_height="wrap_content"
     android:background="@color/gray"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    tools:ignore="MissingPrefix"
-    android:weightSum="7">
+    tools:ignore="MissingPrefix">
 
-    <TextView
-        fontPath="fonts/NanumGothic-Regular.ttf"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/bg_table_header_border"
-        android:gravity="center"
-        android:tag="dayOfWeek1"
-        android:text="@string/sun"
-        android:textSize="11.5dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="-0.75dp"
+        android:layout_above="@+id/ll_calendar_header"
+        android:background="@color/table_header_border"/>
 
-    <TextView
-        fontPath="fonts/NanumGothic-Regular.ttf"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/bg_table_header_border"
-        android:gravity="center"
-        android:tag="dayOfWeek2"
-        android:text="@string/mon"
-        android:textSize="11.5dp" />
+    <LinearLayout
+        android:id="@+id/ll_calendar_header"
+        android:layout_width="match_parent"
+        android:layout_height="27.5dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:weightSum="7">
 
-    <TextView
-        fontPath="fonts/NanumGothic-Regular.ttf"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/bg_table_header_border"
-        android:gravity="center"
-        android:tag="dayOfWeek3"
-        android:text="@string/tue"
-        android:textSize="11.5dp" />
+        <TextView
+            fontPath="fonts/NanumGothic-Regular.ttf"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_table_cell_border"
+            android:gravity="center"
+            android:tag="dayOfWeek1"
+            android:text="@string/sun"
+            android:textSize="11.5dp" />
 
-    <TextView
-        fontPath="fonts/NanumGothic-Regular.ttf"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/bg_table_header_border"
-        android:gravity="center"
-        android:tag="dayOfWeek4"
-        android:text="@string/wed"
-        android:textSize="11.5dp" />
+        <TextView
+            fontPath="fonts/NanumGothic-Regular.ttf"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_table_cell_border"
+            android:gravity="center"
+            android:tag="dayOfWeek2"
+            android:text="@string/mon"
+            android:textSize="11.5dp" />
 
-    <TextView
-        fontPath="fonts/NanumGothic-Regular.ttf"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/bg_table_header_border"
-        android:gravity="center"
-        android:tag="dayOfWeek5"
-        android:text="@string/thu"
-        android:textSize="11.5dp" />
+        <TextView
+            fontPath="fonts/NanumGothic-Regular.ttf"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_table_cell_border"
+            android:gravity="center"
+            android:tag="dayOfWeek3"
+            android:text="@string/tue"
+            android:textSize="11.5dp" />
 
-    <TextView
-        fontPath="fonts/NanumGothic-Regular.ttf"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/bg_table_header_border"
-        android:gravity="center"
-        android:tag="dayOfWeek6"
-        android:text="@string/fri"
-        android:textSize="11.5dp" />
+        <TextView
+            fontPath="fonts/NanumGothic-Regular.ttf"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_table_cell_border"
+            android:gravity="center"
+            android:tag="dayOfWeek4"
+            android:text="@string/wed"
+            android:textSize="11.5dp" />
 
-    <TextView
-        fontPath="fonts/NanumGothic-Regular.ttf"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@drawable/bg_table_header_border"
-        android:gravity="center"
-        android:tag="dayOfWeek7"
-        android:text="@string/sat"
-        android:textSize="11.5dp" />
-</LinearLayout>
+        <TextView
+            fontPath="fonts/NanumGothic-Regular.ttf"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_table_cell_border"
+            android:gravity="center"
+            android:tag="dayOfWeek5"
+            android:text="@string/thu"
+            android:textSize="11.5dp" />
+
+        <TextView
+            fontPath="fonts/NanumGothic-Regular.ttf"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_table_cell_border"
+            android:gravity="center"
+            android:tag="dayOfWeek6"
+            android:text="@string/fri"
+            android:textSize="11.5dp" />
+
+        <TextView
+            fontPath="fonts/NanumGothic-Regular.ttf"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_table_cell_border"
+            android:gravity="center"
+            android:tag="dayOfWeek7"
+            android:text="@string/sat"
+            android:textSize="11.5dp" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/activity_main_table_separator"
+        android:layout_below="@+id/ll_calendar_header"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="-0.125dp"
+        android:background="@color/table_header_border"/>
+
+</RelativeLayout>
